@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta chaeset="UTF">
+    <meta name="viewport" content="widht=device-widht, initial-scale=1.0">
+    <title>TokoPremium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="menuKiri">
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Mitra Kami</a></li>
+                    <li><a href="#">Mulai Berjualan</a></li>
+                    <li><a href="#">Promo</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="judulkanan">
+                <h1 class="judul">Toko Premium</h1>
+            </div>
+            <div class="hero"></div>
+            <div class="content cf">
+                <div class="main">
+                    <h2>Checkout</h2>
+
+                    <h3>Daftar Produk dalam Keranjang Belanja</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="200px" style="text-align: center;">Nama Produk</th>
+                                <th width="10px" style="text-align: center;">Quantity</th>
+                                <th width="20px" style="text-align: center;">Harga</th>
+                                <th width="150px" style="text-align: center;">Jumlah Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="daftar-keranjang">
+                            <!-- Baris tabel akan ditambahkan di sini -->
+                        </tbody>
+                        <tbody>
+                            <!-- Baris Tabel akan ditambahkan di sini -->
+                            <tr>
+                                <td style="text-align: right;" colspan="3">Total Belanja: 
+                                </td>
+                                <td><span id="total-belanjanya">Rp0.00</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    
+                    <!-- Formulir Chekout -->
+                    <form id="formulir-checkout" action="invoice.html" method="post">
+                        <h2>Informasi pengiriminan</h2>
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" required><br>
+
+                        <label for="alamat">Alamat pengiriminan</label>
+                        <textarea id="alamat" name="alamat" required rows="3" cols="60"></textarea><br>
+
+                        <label for="rt">RT/RW:</label>
+                        <input type="number" id="rt" name="rt" required> /
+                        <input type="number" id="rw" name="rw" required><br>
+
+                        <label for="desa">Desa</label>
+                        <input type="text" id="desa" name="desa" required><br>
+
+                        <label for="kecamatan">Kecamatan</label>
+                        <input type="text" id="kecamatan" name="kecamatan" required><br>
+
+                        <label for="kota">Kota</label>
+                        <input type="text" id="kota" name="kota" required><br>
+
+                        <label for="kode-pos">Kode pos</label>
+                        <input type="text" id="kode-pos" name="kode-pos" required><br>
+
+                        <label for="ongkir">Ongkos Kirim</label>
+                        <input type="text" id="ongkir" name="ongkir" required><br>
+
+                        <h2>Informasi Kontak</h2>
+                        <label for="email">Email:</label>
+                        <Input type="email" id="email" name="email" required>
+
+                        <label for="telepon">Nomor Telepon:</label>
+                        <Input type="tel" id="telepon" name="telepon" required>
+                            
+                        <h2>Informasi pembayaran (Rekening Bank) </h2>
+                        <p>Segera selesaikan Proses pembayaran</p>
+
+                        <label for="bank">Bank</label>
+                        <select id="bank" name="bank" required>
+                            <option value="bca">BCA (Bank Central Asia)</option>
+                            <option value="bni">BNi (Bank Negara Indonesia)</option>
+                            <option value="mandiri">MANDIRI (Bank Mandiri)</option>
+                            <option value="bri">BRI (Bank Rakyat Indonesia)</option>
+                        </select> <br>
+                        
+                        <label for="nomor-rekening">Nomor Rekening</label>
+                        <input type="text" id="nomor-rekening" name="nomor-rekening" required><br>
+                        
+                        <label for="nama-pemegang-rekening">Nama Pemegang Rekening</label>
+                        <input type="text" id="nama-rekening" name="nama-rekening" required><br>
+
+                        <label for="cabang-bank">Cabang Bank</label>
+                        <input type="text" id="cabang" name="cabang" required><br>
+
+                        <button id="selesaikan-pembayaran" onclick="selesaikanpembayaran()">Selesaikan Pembayaran</button>
+                    </form>
+                </div>
+                <div class="sidebar">
+                    <!-- Keranjang Belanja -->
+                    <br/> <br/>
+                    <div class="kekranjang">
+                        <h3>Keranjang Belanja</h3>
+                        <u1 id="daftar-keranjang-belanja"></u1>
+                        <p>Total Belanja: <span id="total-belanja">Rp0.00</span></p>
+                    </div>
+                </div>
+            </div>
+            <div clas="footer">
+                <p class="copyright">CopyRight 2023. Toko Premium.</p>
+            </div>
+        </div>
+    </div>
+
+    <script> 
+    // Ambil daftar belanja dari session storage
+    const keranjangBelanja = JSON.parse(sessionStorage.getItem('keranjangBelanja'));
+    
+    // Tampilkan daftar belanja pada halaman
+        const daftarKeranjang = document.getElementById('daftar-keranjang');
+        const totalBelanjanya = document.getElementById('total-belanjanya');
+        let totalBelanja = 0;
+
+        keranjangBelanja.forEach((produk) => {
+            const itemProduk = document.createElement('tr');
+            itemProduk.innerHTML = `
+            <td>${produk.nama}</td>
+            <td>${produk.jumlah}</td>
+            <td>$${produk.harga}</td>
+            <td>$${produk.jumlah * produk.harga}</td>
+          `;
+                daftarKeranjang.appendChild(itemProduk);
+                totalBelanja += (produk.jumlah * produk.harga);
+        });
+            totalBelanjanya.textContent = `$${totalBelanja.toFixed(2)}`;
+
+        const daftarKeranjangBelanja = document.getElementById('daftar-keranjang-belanja');
+        const totalBelanjaElem = document.getElementById('total-belanja');
+        daftarKeranjangBelanja.innerHTML = '';
+        let total = 0;
+
+        keranjangBelanja.forEach((produk) => {
+            const item = document.createElement('li');
+            item.textContent = `${produk.nama} - ${produk.jumlah} - $${produk.harga.toFixed(2)} - $${produk.jumlah * produk.harga.toFixed(2)}`;
+            daftarKeranjangBelanja.appendChild(item);
+            total += (produk.jumlah * produk.harga);
+        });
+        
+        totalBelanjaElem.textContent = `$${total.toFixed(2)}`;
+    </script>
+
+    <script>
+        function selesaikanPembayaran() {
+            const namaPelanggan = document.getElementById('nama').value;
+            const alamat = document.getElementById('alamat').value;
+            const rt = document.getElementById('rt').value;
+            const rw = document.getElementById('rw').value;
+            const desa = document.getElementById('desa').value;
+            const kecamatan = document.getElementById('kecamatan').value;
+            const kota = document.getElementById('kota').value;
+            const kodepos = document.getElementById('kode-pos').value;
+            const ongkir = document.getElementById('ongkir').value;
+            const email = document.getElementById('email').value;
+            const telepon = document.getElementById('telepon').value;
+            const bank = document.getElementById('bank').value;
+            const norek = document.getElementById('nomor-rekening').value;
+            const namaRekening = document.getElementById('nama-rekening').value;
+            const cabang = document.getElementById('cabang').value;
+        
+            sessionStorage.setItem('namaPelanggan', JSON.stringify(namaPelanggan));
+            sessionStorage.setItem('alamatPengiriman', JSON.stringify(alamat+'Rt: '+'Rw: '+rw+'Desa: '+desa+'Kecamatan: '+kecamatan+'Kota/Kab: '+kota+'Kodepos: '+kodepos));
+            sessionStorage.setItem('email', JSON.stringify(email));
+            sessionStorage.setItem('telepon', JSON.stringify(telepon));
+            sessionStorage.setItem('ongkir', JSON.stringify(ongkir));
+            sessionStorage.setItem('bank', JSON.stringify(bank));
+            sessionStorage.setItem('norek', JSON.stringify(norek));
+            sessionStorage.setItem('namaRekening', JSON.stringify(namaRekening));
+            sessionStorage.setItem('cabang', JSON.stringify(cabang));
+        }
+    </script>
+</body>
+</html>
+ 

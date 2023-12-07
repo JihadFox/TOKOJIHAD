@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokoPremium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="menukiri">
+              <ul>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Mitra Kami</a></li>
+                <li><a href="#">Mulai Berjualan</a></li>
+                <li><a href="#">Promo</a></li>
+                <li><a href="#">Kontak</a></li>
+              </ul>
+            </div>
+            <div class="judulkanan">
+                <h1 class="judul">Toko Premium</h1>
+            </div>
+        </div>
+        <div class="hero"></div>
+        <div class="content cf">
+            <div class="main">
+                <h2>Produk terbaru</h2>
+                <li><a href="#">Tentang Kami</a></li>
+                <br>
+                <section class="product" data-kategori="CSMVer2">
+                    <a href="produk1.html"><img src="produk1.png" alt="Produk 1"></a>
+                    <h3>CSM Kabuto Zecter Ver1.5</h3>
+                    <p>CSM Kabuto Zecter dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $350.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM Kabuto Zecter Ver1.5','Rp5.000.000','CSM kabuto Zecter Ver1.5 adalah produk yang dikhususkan untuk orang dewasa','produk1.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('produk 1',350.00)">🛒</button>
+                </section>
+
+                <section class="product" data-kategori="CSMVer1">
+                    <a href="produk1.html"><img src="produk2.png" alt="Produk 2"></a>
+                    <h3>CSM Gatack Zecter</h3>
+                    <p>CSM Gatack Zecter dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $300.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM Gatack Zecter','Rp3.000.000','CSM Gatack Zecter adalah produk yang dikhususkan untuk orang dewasa','produk2.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('produk 2',300.00)">🛒</button>
+                </section>
+
+                <br>
+                <section class="product" data-kategori="CSMVer2">
+                    <a href="produk1.html"><img src="produk3.png" alt="Produk 3"></a>
+                    <h3>CSM Decade Driver Ver2</h3>
+                    <p>CSM Decade Driver dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $500.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM Decade Driver Ver2','Rp.7.500.000','CSM Decade Driver Ver2 adalah produk yang dikhususkan untuk orang dewasa','produk3.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('produk 3',500.00)">🛒</button>
+                </section>
+
+                <section class="product" data-kategori="CSMVer1">
+                    <a href="produk1.html"><img src="produk4.png" alt="Produk 4"></a>
+                    <h3>CSM Diend Driver</h3>
+                    <p>CSM Diend Driver dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $320.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM Diend Driver','Rp.4.000.000','CSM Diend Driver adalah produk yang dikhususkan untuk orang dewasa','produk4.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('poduk 4',320.00)">🛒</button>
+                </section>
+                <br>
+                <section class="product" data-kategori="CSMVer1">
+                    <a href="produk1.html"><img src="produk5.png" alt="Produk 5"></a>
+                    <h3>CSM Faiz Gear</h3>
+                    <p>CSM Faiz Gear dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $310.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM Faiz Gear','Rp.3.500.000','CSM Faiz Gear adalah produk yang dikhususkan untuk orang dewasa','produk5.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('poduk 5',310.00)">🛒</button>
+                </section>
+
+                <section class="product" data-kategori="CSMVer1">
+                    <a href="produk1.html"><img src="produk6.png" alt="Produk 6"></a>
+                    <h3>CSM OOO Driver</h3>
+                    <p>CSM OOO Driver dengan versi yang lebih tinggi dari DX</p>
+                    <p class="price">Harga: $400.00</p>
+                    <button class="tombol-beli" onclick="tampilkanDetailProduk ('CSM OOO Driver','Rp.6.000.000','CSM OOO Driver adalah produk yang dikhususkan untuk orang dewasa','produk6.png')">Detail Produk</button>
+                    <button class="tombol-keranjang" onclick="tambahkanProdukKeKeranjang('poduk 6',400.00)">🛒</button>
+                </section>
+
+
+            
+                <!-- Detail Produk Seperti Sebelumnya -->
+    
+            </div>
+            <div class="sidebar">
+                <h3>Kategori</h3>
+                <div class="kategori-pilihan">
+                <input type="text" id="cariBarang" placeholder="Cari Barang....." onkeyup="cariBarang()">
+                <button onclick="filterKategori ('all')">semua</button></br>
+                <button onclick="filterKategori ('CSMVer1')">CSMVer1</button></br>
+                <button onclick="filterKategori ('CSMVer2')">CSMVer2</button></br>
+            </div>
+        </div>
+    </div>
+    <br> <br>
+    <from id="formulir-TokoPremium" action="checkout.html" method="post">
+    <div class="keranjang">
+        <h3>Keranjang Belanja</h3>
+        <ul id="daftar-keranjang">
+
+        </ul>
+        <p>Total Belanja <span id="total-belanja">Rp0.00</span></p>
+        <a href="chekout.html"><button id="checkout" onclick= "checkout()">Checkout</button></a>
+    
+    </div>
+    <div class="footer">
+        <p class="copyright">Copyright 2023. Toko Premium.</p>
+    </div>  
+</div>
+
+        <script>
+            function tampilkanDetailProduk(namaProduk, hargaProduk, detailProduk, gambarProduk) 
+            {
+                // Buat elemen notifikasi/popup
+                const popup = document.createElement('div');
+                popup.className = 'popup';
+                popup.innerHTML = `
+                <div class="popup-content">
+                    <span class="popup-close" onclick="tutupPopup ()">&times;</span>
+                    <img src="${gambarProduk}" alt="${namaProduk}">
+                    <h2> ${namaProduk} </h2>
+                    <p class="price">Harga: ${hargaProduk}</p>
+                    <p>${detailProduk}</p>
+                    <button class="tombolbeli">Beli Sekarang</button>
+                    </div> `;
+
+                    // Tambahkan notifikasi/popup ke body
+                    document.body.appendChild(popup);
+            }
+
+            function tutupPopup() {
+                const popup = document.querySelector('.popup');
+                if (popup) {
+                   document.body.removeChild (popup);
+                }
+            }
+        </script>
+
+        <script>
+            function filterKategori (kategori) {
+                const produk = document.querySelectorAll('.product');
+                for (const produkItem of produk) {
+                    const kategoriProduk = produkItem.getAttribute('data-kategori');
+
+                    if (kategori === 'all' || kategori === kategoriProduk) {
+                        produkItem.style.display = 'block';
+                    } else {
+                        produkItem.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+
+        <script>
+            const keranjang = [];
+            const totalBelanja = 0;
+
+            function tambahkanProdukKeKeranjang(namaProduk, harga) {
+            let produkDitemukan = false;
+            for(let i = 0; i < keranjang.length; i++){
+              if(keranjang[i].nama === namaProduk){
+                keranjang[i].jumlah++;
+                produkDitemukan = true;
+                break
+              }
+            }
+            if(!produkDitemukan){
+                keranjang.push({nama: namaProduk, harga: harga, jumlah: 1})
+            }
+            updateKeranjang();
+        }               
+        
+            function updateKeranjang(){
+                const daftarKeranjang = document.getElementById('daftar-keranjang');
+                const totalBelanjaELem = document.getElementById('total-belanja');
+                daftarKeranjang.innerHTML = '';
+                let total = 0;
+
+
+                keranjang.forEach((produk) => {
+                    const item = document.createElement('li');
+                    item.textContent = `${produk.nama}- ${produk.jumlah} - $${produk.harga.toFixed(2)}`;
+                    daftarKeranjang.appendChild(item);
+                    total += produk.harga;
+                });
+                totalBelanjaELem.textContent = `$${total.toFixed(2)}`;
+                sessionStorage.setItem('keranjangBelanja',JSON.stringify(keranjang));
+            }
+            function checkout(){}
+        </script>
+
+    <script>
+        function cariBarang() {
+            const inputPencarian = 
+            document.getElementById('cariBarang');
+            const kataKunci = inputPencarian.value.toLowerCase();
+            const produk = document.querySelectorAll('.product')
+
+            for (const produkItem of produk) {
+                const namaProduk = produkItem.querySelector('h3').textContent.toLowerCase();
+                const deskripsiProduk = produkItem.querySelector('p').textContent.toLowerCase();
+                if (namaProduk.includes(kataKunci) || deskripsiProduk.includes(kataKunci)) {
+                    produkItem.style.display = 'block';
+                } else {
+                    produkItem.style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
